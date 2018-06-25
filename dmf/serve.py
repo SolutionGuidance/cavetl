@@ -10,7 +10,6 @@ try:
 except RuntimeError:
     app.config.from_object('config')
 
-
 client = SsnClient(
     user_id=app.config['USER_ID'],
     password=app.config['PASSWORD'],

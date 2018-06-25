@@ -45,3 +45,6 @@ class VerisSsnClient(SsnApiClient):
             proxies=self.proxies
         )
         return parker.data(fromstring(response.content))
+
+    #def getDmfRecord(self, ssn):
+    #    return self.dmfRecordQuery(ssn)
