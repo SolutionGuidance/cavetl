@@ -44,7 +44,20 @@ class VerisSsnClient(SsnApiClient):
         	headers=headers,
             proxies=self.proxies
         )
-        return parker.data(fromstring(response.content))
 
-    #def getDmfRecord(self, ssn):
-    #    return self.dmfRecordQuery(ssn)
+        dmf_record = parker.data(fromstring(response.content))
+
+        dmf_record_present = False
+        full_name = None
+
+        if dmf_record['Record'].get('DmfSearch', False):
+            dmf_record_present = True
+
+        if dmf_record['Record']['CommercialNameSearch'].get('Identity', False):
+            full_name = dmf_record['Record']['CommercialNameSearch']['Identity']['NameInfo']['WholeName']
+
+        return {
+            'ssn': ssn,
+            'full_name': full_name,
+            'dmf_record_present': dmf_record_present
+        }

@@ -19,12 +19,13 @@ client = SsnClient(
 
 @app.route('/')
 def index():
-    return 'hello world'
+    return Response(status=200)
 
-@app.route('/ssn/<ssn>')
+@app.route('/dmf/<ssn>')
 def dmf_search(ssn):
-    xml = client.getDmfRecord(ssn)
-    return Response(dumps(xml), content_type="application/json")
+    dmf_record = client.getDmfRecord(ssn)
+
+    return Response(dumps(dmf_record), content_type="application/json")
 
 if __name__ == '__main__':
     app.run(debug=True)
