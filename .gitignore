@@ -1,3 +1,5 @@
+dmf/prod_config.py
+scratch/
 *.sqlite3
 .cache/
 .coverage
