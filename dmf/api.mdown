@@ -1,0 +1,18 @@
+## Calling
+
+The API wrapping the DMF data currently has one endpoint, `/dmf`, which accepts `GET` requests with a social security number as input, like so:
+
+```
+/dmf/<ssn>
+```
+`<ssn>` can be in the form `123-45-6789` or `123456789`.
+
+(PDF)](https://donotpay.treas.gov/20160615QRCLEIEFINAL.pdf):
+
+## Return values
+
+The API returns a JSON object with three keys:
+
+`ssn`: The SSN sent in the request
+`name`: The full name associated with the SSN, if available
+`dmf_record_present`: Whether there is a record in the DMF associated with this SSN
