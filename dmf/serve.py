@@ -23,8 +23,7 @@ def index():
 
 @app.route('/dmf/<ssn>')
 def dmf_search(ssn):
-    dmf_record = client.getDmfRecord(ssn)
-
+    dmf_record = client.get_dmf_record(ssn)
     return Response(dumps(dmf_record), content_type="application/json")
 
 if __name__ == '__main__':
