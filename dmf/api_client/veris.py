@@ -6,15 +6,15 @@ import pdb
 import requests
 
 class VerisSsnClient(SsnApiClient):
-    def __init__(self, user_id=None, password=None, http_proxy=None, https_proxy=None):
+    def __init__(self, app_config):
         self.default_query = {
-            'UserID': user_id,
-            'Password': password,
+            'UserID': app_config['USER_ID'],
+            'Password': app_config['PASSWORD'],
             'Version': 2
         }
         self.proxies = {
-            'http': http_proxy,
-            'https': https_proxy
+            'http': app_config['HTTP_PROXY'],
+            'https': app_config['HTTPS_PROXY']
         }
 
 

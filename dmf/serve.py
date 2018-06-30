@@ -1,8 +1,8 @@
 from flask import Flask, Response, jsonify
 from json import dumps
-from api_client.veris import VerisSsnClient as SsnClient
 import requests
 import pdb
+import importlib
 
 app = Flask(__name__)
 try:
@@ -10,12 +10,12 @@ try:
 except RuntimeError:
     app.config.from_object('config')
 
-client = SsnClient(
-    user_id=app.config['USER_ID'],
-    password=app.config['PASSWORD'],
-    http_proxy=app.config['HTTP_PROXY'],
-    https_proxy=app.config['HTTPS_PROXY']
-)
+try:
+    SsnClient = getattr(importlib.import_module(app.config['SSN_MODULE']), app.config['SSN_CLIENT'])
+except (ModuleNotFoundError, KeyError, AttributeError):
+    raise ImportError("Your SSN client backend couldn't be imported, probably because of an error with configuration.")
+
+client = SsnClient(app.config)
 
 @app.route('/')
 def index():
