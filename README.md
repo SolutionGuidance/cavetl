@@ -36,15 +36,15 @@ CAV ETL's goals are to:
 * Lower operational costs (including fees) for accessing the data.
 * Streamline the bureaucratic process of authentication and authorization.
 
-If you're interested in participating in CAV ETL development, or even
-if you just want to discuss something with the developers, please see
+Please see [INSTALL.md](INSTALL.md) for installation instructions.  If
+you're interested in participating in CAV ETL development, or even if
+you just want to discuss something with the developers, please see
 the [contribution guidelines](CONTRIBUTING.md).
 
 ## Status
 
 CAV ETL is a **work-in-progress** and is **not yet ready for
-production deployment**.  Please see [INSTALL.md](INSTALL.md) for
-details.
+production deployment**.
 
 Currently supported sources:
 
