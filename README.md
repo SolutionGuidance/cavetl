@@ -17,5 +17,5 @@ as its new access methods develop.
 We believe the CAVETL stack has applications in State MMIS systems, to
 health care providers screening employees, and to health insurers
 vetting in-network providers.  If you see ways to build on CAVETL,
-please get in touch with james AT opentechstrategies.com.  We'd love
+please get in touch with james AT solutionguidance.com.  We'd love
 to help!
