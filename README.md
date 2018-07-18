@@ -1,4 +1,4 @@
-# Certification and Validation Extract, Translate, and Load
+# Credentialing and Verification: Extract, Translate, and Load
 
 This is a standalone open source project meant to support access to
 third-party data sources useful for credentialing and vetting health
@@ -8,8 +8,8 @@ healthcare services.
 
 Currently, we provide access to:
 
- * LEIE Exclusions List (complete)
- * Social Security's Death Master File (commits yet to be merged)
+ * LEIE Exclusions List
+ * Social Security's Death Master File
  
 And we have plans for many more, including certifications and PECOS,
 as its new access methods develop.
