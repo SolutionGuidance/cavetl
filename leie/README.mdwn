@@ -59,7 +59,7 @@ that on a Debian box:
     $ apt-get install golang
     $ mkdir -p /usr/local/share/golang
     $ export GOPATH=/usr/local/share/golang
-    $ export PATH=$PATH:$GOROOT/bin
+    $ export PATH=$PATH:$GOPATH/bin
 
 Or, if you don't want to install goose as a superuser:
 
