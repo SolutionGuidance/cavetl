@@ -44,6 +44,14 @@ known-good combination of versions but there is no reason to think
 newer versions will break anything.  If you change versions, use the
 test suite.
 
+To use a Python virtual environment, set it up like so:
+
+    $ cd {path-to-cavetl}/leie
+    $ virtualenv --python=python3 venv
+    $ . venv/bin/activate
+
+Then install the python requirements:
+
     $ pip install -r requirements.txt
 
 If you want sqlite3, don't get it from pypi (you can't).  Use your
@@ -52,19 +60,12 @@ distro's packaged version:
     $ apt-get install sqlite3
 
 You'll want goose to migrate the db up and down, which requires
-golang.  If you don't have golang, you'll need to install it, set your
-GOPATH and add GOPATH to your local PATH.  Here is how you might do
-that on a Debian box:
+golang.  If you don't have golang, you'll need to install it and
+set your GOPATH.  Here is how you might do that on a Debian box:
 
     $ apt-get install golang
-    $ mkdir -p /usr/local/share/golang
-    $ export GOPATH=/usr/local/share/golang
-    $ export PATH=$PATH:$GOPATH/bin
-
-Or, if you don't want to install goose as a superuser:
-
-    $ mkdir -p {path-to-psm}/etl/golang
-    $ export GOPATH={path-to-psm}/etl/golang
+    $ mkdir -p {path-to-cavetl}/leie/golang
+    $ export GOPATH={path-to-cavetl}/leie/golang
 
 Then, install goose:
 
@@ -73,7 +74,7 @@ Then, install goose:
 This puts it in the `bin` subdir under your specified `$GOPATH`.  Add
 that path to your `$PATH`:
 
-    $ export PATH=$PATH:{path-to-psm}/etl/golang/bin
+    $ export PATH=$PATH:$GOPATH/bin
 
 ## Running
 
@@ -81,6 +82,8 @@ This program downloads the csv files.  Run it periodically to stay up
 to date.  They only update monthly.
 
 First, generate the migrations:
+
+    $ cd {path-to-cavetl}/leie/leie
     $ ./model.py
 
 Second, run the etl process.  See the DEPENDENCIES section for how to
@@ -96,8 +99,7 @@ about not saving the same data twice.
 
 To serve requests over the API, run:
 
-    $ cd {path_to_psm}/etl/leie/leie
-    $ ./serve.py flask run
+    $ ./serve.py
 
 A good test command to see if this is working correctly is:
 
