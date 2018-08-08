@@ -165,9 +165,9 @@ DROP TABLE reinstatement;
             out, err = p.communicate()
             out = out.decode("utf-8")
             err = err.decode("utf-8")
-            if err != '':
+            if p.returncode != 0:
                 sys.stderr.write("%s\n%s" % (out, err))
-                raise subprocess.CalledProcessError(0, cmd, out+err)
+                raise subprocess.CalledProcessError(p.returncode, cmd, out+err)
             return out
 
     def up(self, migration):
