@@ -1,0 +1,6 @@
+version: '2.3'
+services:
+  leie:
+    build: leie
+    ports:
+      - "5000:5000"

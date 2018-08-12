@@ -163,4 +163,4 @@ def requested_mimetype():
 
 if __name__ == "__main__":
     os.system('pandoc api.mdwn > api.html')
-    app.run()
+    app.run(host='0.0.0.0')
