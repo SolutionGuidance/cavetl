@@ -166,11 +166,12 @@ def build_docs():
     """Build documentation in the current directory."""
     # Doing this the old-fashioned way, instead of with 'with',
     # because we'll be renaming the file.
-    output = open("api.html.tmp", "w")
+    tmpfile_name = "api.html.tmp"
+    output = open(tmpfile_name, "w")
     try:
         subprocess.run(["pandoc", "api.mdwn"], stdout=output)
         output.close()
-        os.rename("api.html.tmp", "api.html")
+        os.rename(tmpfile_name, "api.html")
     except FileNotFoundError as e:
         # 'pandoc' not installed, so warn and give up.
         output.close() # this never ran in the 'try', so do it here
@@ -185,8 +186,8 @@ def build_docs():
             "         Install pandoc (https://pandoc.org/) to make\n")
         sys.stderr.write(
             "         this warning go away.\n")
-    if os.path.exists("api.html.tmp"):
-        os.remove("api.html.tmp")
+    if os.path.exists(tmpfile_name):
+        os.remove(tmpfile_name)
 
 if __name__ == "__main__":
     # See https://github.com/SolutionGuidance/cavetl/issues/12 about
