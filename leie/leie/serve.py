@@ -173,10 +173,14 @@ def build_docs():
             s = ""
             if os.path.exists("api.html"):
                 s = "re"
-            sys.stderr.write("WARNING: The 'pandoc' program was not available, so the\n")
-            sys.stderr.write("         'api.html' file has not been %sgenerated.\n" % s)
-            sys.stderr.write("         Install pandoc (https://pandoc.org/) to make\n")
-            sys.stderr.write("         this warning go away.\n")
+            sys.stderr.write(
+                "WARNING: The 'pandoc' program was not available, so the\n")
+            sys.stderr.write(
+                "         'api.html' file has not been %sgenerated.\n" % s)
+            sys.stderr.write(
+                "         Install pandoc (https://pandoc.org/) to make\n")
+            sys.stderr.write(
+                "         this warning go away.\n")
 
 if __name__ == "__main__":
     # See https://github.com/SolutionGuidance/cavetl/issues/12 about
