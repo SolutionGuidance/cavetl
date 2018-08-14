@@ -71,8 +71,12 @@ Then, install goose:
 
     $ go get -u github.com/pressly/goose/cmd/goose
 
-This puts it in the `bin` subdir under your specified `$GOPATH`.  Add
-that path to your `$PATH`:
+(Over a slow Net connection this might take a while, because it has to
+clone various git repositories locally under
+{path-to-cavetl}/leie/golang/src/github.com/.)
+
+Now goose is installed in the `bin` subdir under your specified
+`$GOPATH`.  Add that path to your `$PATH`:
 
     $ export PATH=$PATH:$GOPATH/bin
 
@@ -91,11 +95,16 @@ install `goose`, which is required to do this.
 
     $ ./etl.py
 
-This will put data into the development database specified in
+(Over a slow, or even not fast, Net connection this might take a while
+the first time, because various large data files are being fetched
+from upstream sources.  They will be cached locally, so future runs of
+etl.py will be speedier.)
+
+Now data has been put into the development database specified in
 `db/dbconf.yml`.  Feel free to edit `dbconf.yml` as you need.
 
 Don't worry about running the ETL twice.  The program is pretty good
-about not saving the same data twice.
+about not redoing work unnecessarily.
 
 To serve requests over the API, run:
 
