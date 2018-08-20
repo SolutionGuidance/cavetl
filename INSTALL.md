@@ -1,14 +1,27 @@
                 Installation instructions for CAV ETL
                 =====================================
 
-***TBD: These installation instructions are still to be written.***
+Each CAV ETL application runs as its own microservice.  (We do not
+provide any orchestration yet, but will consider doing so as the set
+of services grows.)  Each service is deployed in a fairly standard
+Python-y way: you activate a Python virtualevn, install the
+requirements, and run.
+
+You can run all the services via Docker -- see the corresponding
+section below -- or run each service individually:
+
+* [LEIE](leie/README.md)
+* [DMF](dmf/README.md)
 
 ## Docker
-There is very little setup required. If Docker works on your system, change into the root directory of this project and run:
 
-$ docker-compose -p cavetl up --build
+If Docker is set up on your system, go to the root directory of this
+project and run:
 
-This command will build and run the full Docker setup for both the dmf and leie repositories.
+    $ docker-compose -p cavetl up --build
 
-leie will now serve on local port 5000
-dmf will serve on local port 5001
+This will build and run the full Docker setup for both the LEIE and
+DMF services.
+
+* LEIE will serve on local port 5000
+* DMF will serve on local port 5001
