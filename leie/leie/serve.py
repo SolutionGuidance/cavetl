@@ -193,4 +193,4 @@ if __name__ == "__main__":
     # See https://github.com/SolutionGuidance/cavetl/issues/12 about
     # whether we should be building docs at application launch time.
     build_docs()
-    app.run()
+    app.run(host='0.0.0.0')
