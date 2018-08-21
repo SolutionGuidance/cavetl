@@ -13,7 +13,8 @@ RUN apt-get update && apt-get install -y \
   python3-dev \
   build-essential \
   git \
-  golang-go
+  golang-go \
+  pandoc
 
 COPY . /app
 RUN cd /app && pip3 install -r requirements.txt

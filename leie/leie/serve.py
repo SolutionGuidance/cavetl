@@ -13,6 +13,7 @@ import math
 import os
 import simplejson as json
 import sys
+import subprocess
 
 # Make sure we can load modules from this directory
 sys.path.insert(0, os.path.dirname(__file__))
@@ -161,6 +162,35 @@ def requested_mimetype():
     else:
         return 'json'
 
+def build_docs():
+    """Build documentation in the current directory."""
+    # Doing this the old-fashioned way, instead of with 'with',
+    # because we'll be renaming the file.
+    tmpfile_name = "api.html.tmp"
+    output = open(tmpfile_name, "w")
+    try:
+        subprocess.run(["pandoc", "api.mdwn"], stdout=output)
+        output.close()
+        os.rename(tmpfile_name, "api.html")
+    except FileNotFoundError as e:
+        # 'pandoc' not installed, so warn and give up.
+        output.close() # this never ran in the 'try', so do it here
+        s = ""
+        if os.path.exists("api.html"):
+            s = "re"
+        sys.stderr.write( 
+            "WARNING: The 'pandoc' program was not available, so the\n")
+        sys.stderr.write(
+            "         'api.html' file has not been %sgenerated.\n" % s)
+        sys.stderr.write(
+            "         Install pandoc (https://pandoc.org/) to make\n")
+        sys.stderr.write(
+            "         this warning go away.\n")
+    if os.path.exists(tmpfile_name):
+        os.remove(tmpfile_name)
+
 if __name__ == "__main__":
-    os.system('pandoc api.mdwn > api.html')
+    # See https://github.com/SolutionGuidance/cavetl/issues/12 about
+    # whether we should be building docs at application launch time.
+    build_docs()
     app.run(host='0.0.0.0')
