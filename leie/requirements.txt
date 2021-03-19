@@ -1,7 +1,7 @@
 dicttoxml==1.7.4
 Flask==0.12.2
 itsdangerous==0.24
-Jinja2==2.9.6
+Jinja2==2.11.3
 MarkupSafe==1.0
 petl==1.1.1
 py==1.4.34
